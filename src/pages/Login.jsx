@@ -25,10 +25,6 @@ class Login extends React.Component {
     }
   }
 
-  // componentDidMount() {
-
-  // }
-
    salvarNOme = async () => {
      const { nome } = this.state;
      this.setState({ carregando: true });
@@ -63,7 +59,7 @@ class Login extends React.Component {
            </button>
          </form>
          {carregando && <Carregando /> }
-         {redirect && <Redirect to="./search" />}
+         {redirect && <Redirect to="/search" />}
        </div>
      );
    }
