@@ -35,11 +35,8 @@ class MusicCard extends React.Component {
   verificarFav = async () => {
     const { trackId } = this.props;
     const fav = await getFavoriteSongs();
-    console.log(fav);
-    const a = fav.some((elemento) => elemento.trackId === trackId);
-
-    console.log(a);
-    this.setState({ verificaInput: a });
+    const verifVaforito = fav.some((elemento) => elemento.trackId === trackId);
+    this.setState({ verificaInput: verifVaforito });
   }
 
   render() {
