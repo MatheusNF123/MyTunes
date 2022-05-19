@@ -29,10 +29,12 @@ componentDidMount() {
           <h4 data-testid="album-name">{objeto && objeto[0].collectionName}</h4>
           {console.log(objeto)}
           {objeto && objeto.filter((elemento) => elemento.trackId)
-            .map(({ trackName, previewUrl }, index) => (<MusicCard
-              key={ `${trackName} ${index}` }
-              trackName={ trackName }
-              previewUrl={ previewUrl }
+            .map((element, index) => (<MusicCard
+              key={ `${element.trackName} ${index}` }
+              trackName={ element.trackName }
+              previewUrl={ element.previewUrl }
+              trackId={ element.trackId }
+              all={ element }
             />))}
 
         </div>
