@@ -1,6 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import { addSong /* removeSong */, getFavoriteSongs } from '../services/favoriteSongsAPI';
+import { addSong, removeSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
 import Carregando from '../pages/Carregando';
 
 class MusicCard extends React.Component {
@@ -27,9 +27,12 @@ class MusicCard extends React.Component {
     if (verificaInput) {
       this.setState({ carregando: true });
       await addSong(all);
+      this.setState({ carregando: false });
+    } else {
+      this.setState({ carregando: true });
+      await removeSong(all);
+      this.setState({ carregando: false });
     }
-    console.log(fav);
-    this.setState({ carregando: false });
   }
 
   verificarFav = async () => {
