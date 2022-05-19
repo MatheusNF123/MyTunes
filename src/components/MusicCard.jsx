@@ -23,7 +23,7 @@ class MusicCard extends React.Component {
 
   fetchApi = async () => {
     const { verificaInput } = this.state;
-    const { all } = this.props;
+    const { all, removerFav, tela } = this.props;
     if (verificaInput) {
       this.setState({ carregando: true });
       await addSong(all);
@@ -31,6 +31,9 @@ class MusicCard extends React.Component {
     } else {
       this.setState({ carregando: true });
       await removeSong(all);
+      if (tela === 'favoritos') {
+        removerFav(all);
+      }
       this.setState({ carregando: false });
     }
   }
