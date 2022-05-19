@@ -3,15 +3,26 @@ import propTypes from 'prop-types';
 import Header from '../components/Header';
 import MusicCard from '../components/MusicCard';
 import getMusics from '../services/musicsAPI';
+// import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 class Album extends React.Component {
 state = {
   objeto: '',
+  // carregando: false,
+  // listaFav: '',
 }
 
 componentDidMount() {
+  // this.recuperaFav();
   this.fetchApi();
 }
+
+// recuperaFav = async () => {
+//   this.setState({ carregando: true });
+//   const salvaLista = await getFavoriteSongs();
+//   this.setState({ carregando: false, listaFav: salvaLista });
+//   console.log(salvaLista);
+// }
 
   fetchApi = async () => {
     const { match: { params: { id } } } = this.props;
@@ -20,14 +31,13 @@ componentDidMount() {
   }
 
   render() {
-    const { objeto } = this.state;
+    const { objeto /* listaFav */ } = this.state;
     return (
       <>
         <Header />
         <div data-testid="page-album">
           <h4 data-testid="artist-name">{objeto && objeto[0].artistName}</h4>
           <h4 data-testid="album-name">{objeto && objeto[0].collectionName}</h4>
-          {console.log(objeto)}
           {objeto && objeto.filter((elemento) => elemento.trackId)
             .map((element, index) => (<MusicCard
               key={ `${element.trackName} ${index}` }

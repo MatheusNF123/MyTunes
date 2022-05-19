@@ -1,12 +1,16 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import { addSong } from '../services/favoriteSongsAPI';
+import { addSong /* removeSong */, getFavoriteSongs } from '../services/favoriteSongsAPI';
 import Carregando from '../pages/Carregando';
 
 class MusicCard extends React.Component {
   state = {
     verificaInput: false,
     carregando: false,
+  }
+
+  componentDidMount() {
+    this.verificarFav();
   }
 
   onInputChange = ({ target }) => {
@@ -24,7 +28,18 @@ class MusicCard extends React.Component {
       this.setState({ carregando: true });
       await addSong(all);
     }
+    console.log(fav);
     this.setState({ carregando: false });
+  }
+
+  verificarFav = async () => {
+    const { trackId } = this.props;
+    const fav = await getFavoriteSongs();
+    console.log(fav);
+    const a = fav.some((elemento) => elemento.trackId === trackId);
+
+    console.log(a);
+    this.setState({ verificaInput: a });
   }
 
   render() {
@@ -43,7 +58,7 @@ class MusicCard extends React.Component {
             type="checkbox"
             name="verificaInput"
             id="fav"
-            value={ verificaInput }
+            checked={ verificaInput }
             onChange={ this.onInputChange }
           />
         </label>
