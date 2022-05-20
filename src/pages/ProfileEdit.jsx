@@ -43,9 +43,9 @@ class ProfileEdit extends React.Component {
     }
   }
 
-alteracoes = async () => {
+alteracoes = () => {
   const { name, email, description, image } = this.state;
-  await updateUser({ name, email, image, description });
+  updateUser({ name, email, image, description });
   this.setState({ desabilita: true, redirecionar: true });
 }
 
@@ -76,7 +76,7 @@ render() {
                 Alterar Email:
                 <input
                   data-testid="edit-input-email"
-                  type="text"
+                  type="email"
                   name="email"
                   id="rEmail"
                   value={ email }

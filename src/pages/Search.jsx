@@ -30,10 +30,6 @@ class Search extends React.Component {
     }
   }
 
-  // componentDidMount() {
-  //   this.colocarNaTela();
-  // }
-
   pesquisar = async () => {
     const { nomeB } = this.state;
     this.setState({ nomeDigitado: nomeB, carregando: true, nomeB: '' });
@@ -43,8 +39,6 @@ class Search extends React.Component {
     } else {
       this.setState({ carregando: false, array: obj, listar: true, loadding: true });
     }
-    // this.setState({ carregando: false, array: obj, listar: true });
-    // console.log(response);
   }
 
   colocarNaTela = () => {
@@ -113,7 +107,6 @@ class Search extends React.Component {
 
                 </button>
               </form>) }
-          {/* {listar ? this.colocarNaTela() : <h4>Nenhum álbum foi encontrado</h4>} */}
           { loadding && this.colocarNaTela() }
 
         </div>

@@ -8,21 +8,11 @@ import getMusics from '../services/musicsAPI';
 class Album extends React.Component {
 state = {
   objeto: '',
-  // carregando: false,
-  // listaFav: '',
 }
 
 componentDidMount() {
-  // this.recuperaFav();
   this.fetchApi();
 }
-
-// recuperaFav = async () => {
-//   this.setState({ carregando: true });
-//   const salvaLista = await getFavoriteSongs();
-//   this.setState({ carregando: false, listaFav: salvaLista });
-//   console.log(salvaLista);
-// }
 
   fetchApi = async () => {
     const { match: { params: { id } } } = this.props;
@@ -31,7 +21,7 @@ componentDidMount() {
   }
 
   render() {
-    const { objeto /* listaFav */ } = this.state;
+    const { objeto } = this.state;
     return (
       <>
         <Header />

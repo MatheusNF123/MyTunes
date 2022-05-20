@@ -5,7 +5,6 @@ import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 class Favorites extends React.Component {
   state = {
-    // carregando: false,
     favorito: [],
   }
 
@@ -14,7 +13,6 @@ class Favorites extends React.Component {
   }
 
   chamaFetch = async () => {
-    // this.setState({ carregando: true });
     const pegarFav = await getFavoriteSongs();
     this.setState({ favorito: pegarFav });
   }
