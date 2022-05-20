@@ -1,5 +1,6 @@
+import propTypes from 'prop-types';
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 import Header from '../components/Header';
 import { getUser, updateUser } from '../services/userAPI';
 import Carregando from './Carregando';
@@ -12,11 +13,11 @@ class ProfileEdit extends React.Component {
     description: '',
     image: '',
     desabilita: true,
-    redirecionar: false,
+    // redirecionar: false,
   }
 
-  componentDidMount() {
-    this.chamaApi();
+  async componentDidMount() {
+    await this.chamaApi();
     this.verificaInput();
   }
 
@@ -31,7 +32,7 @@ class ProfileEdit extends React.Component {
   chamaApi = async () => {
     this.setState({ carregando: true });
     const recuperaInfos = await getUser();
-    this.setState({ carregando: false, ...recuperaInfos }, this.verificaInput);
+    this.setState({ carregando: false, ...recuperaInfos }/* , this.verificaInput */);
   }
 
   verificaInput = () => {
@@ -43,20 +44,21 @@ class ProfileEdit extends React.Component {
     }
   }
 
-alteracoes = () => {
+alteracoes = async () => {
+  const { history } = this.props;
   const { name, email, description, image } = this.state;
-  updateUser({ name, email, image, description });
-  this.setState({ desabilita: true, redirecionar: true });
+  await updateUser({ name, email, image, description });
+  this.setState({ desabilita: true }, history.push('/profile'));
 }
 
 render() {
   const { carregando, desabilita,
-    name, image, email, description, redirecionar } = this.state;
+    name, image, email, description/* , redirecionar */ } = this.state;
   return (
     <>
       <Header />
       <div data-testid="page-profile-edit">
-        {redirecionar && <Redirect to="/profile" />}
+        {/*  {redirecionar && <Redirect to="/profile" />} */}
         {
           carregando ? <Carregando /> : (
             <form>
@@ -131,4 +133,10 @@ render() {
   );
 }
 }
+
+ProfileEdit.propTypes = {
+  history: propTypes.shape({
+    push: propTypes.func,
+  }).isRequired,
+};
 export default ProfileEdit;

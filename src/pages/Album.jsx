@@ -26,7 +26,6 @@ componentDidMount() {
       <>
         <Header />
         <div data-testid="page-album">
-          {console.log(objeto[0])}
           <h4 data-testid="artist-name">{objeto && objeto[0].artistName}</h4>
           <h4 data-testid="album-name">{objeto && objeto[0].collectionName}</h4>
           {objeto && objeto.filter((elemento) => elemento.trackId)
