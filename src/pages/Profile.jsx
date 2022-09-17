@@ -23,18 +23,23 @@ class Profile extends React.Component {
   descricao = () => {
     const { infos: { name, email, image, description } } = this.state;
     return (
-      <div>
-        <p>{name}</p>
-        <p>{email}</p>
-        <p>{description}</p>
-        <div>
-          <img
-            data-testid="profile-image"
-            src={ image }
-            alt={ description }
-          />
+      <div className="container-profile">
+        <div className="profileInfos">
+          <span>{`Nome:  ${name}`}</span>
+          <hr />
+          <span>{`Email: ${email}`}</span>
+          <hr />
+          <span>{`Descrição: ${description}`}</span>
+          <hr />
+          <div className="cont-img">
+            <img
+              data-testid="profile-image"
+              src={ image || 'https://upload.wikimedia.org/wikipedia/commons/7/70/User_icon_BLACK-01.png' }
+              alt={ description }
+            />
+          </div>
+          <Link to="/profile/edit">Editar perfil</Link>
         </div>
-        <Link to="/profile/edit">Editar perfil</Link>
       </div>
     );
   }

@@ -16,23 +16,94 @@ class Header extends React.Component {
   fetch = async () => {
     this.setState({ carregando: true });
     const info = await getUser();
-    this.setState({ nomeUsuario: info.name, carregando: false });
+    this.setState({
+      nomeUsuario: info.name,
+      email: info.email,
+      description: info.description,
+      image: info.image || 'https://upload.wikimedia.org/wikipedia/commons/7/70/User_icon_BLACK-01.png',
+      carregando: false });
   }
 
   render() {
-    const { nomeUsuario, carregando } = this.state;
+    const { nomeUsuario, carregando, image } = this.state;
     return (
-      <header data-testid="header-component">
-        <h1>Header</h1>
-        <nav>
-          <Link data-testid="link-to-search" to="/search"> Pesquisa </Link>
-          <Link data-testid="link-to-favorites" to="/favorites"> favorites </Link>
-          <Link data-testid="link-to-profile" to="/profile"> profile </Link>
+
+      // carregando
+      //   ? <Carregando />
+      //   : (
+      <header className="header" data-testid="header-component">
+        <div className="titulo-user">
+          <h4 className="h1-login">TrybeTunes</h4>
+          <div className="cont-player">
+            <span className="material-symbols-outlined font-play">
+              fast_rewind
+            </span>
+            <span className="material-symbols-outlined font-play">
+              pause
+            </span>
+            <span className="material-symbols-outlined font-play">
+              fast_forward
+            </span>
+          </div>
+          <div className="infos-User">
+            <div className="cont-img-header">
+              <img
+                className="header-img"
+                src={ image || 'https://upload.wikimedia.org/wikipedia/commons/7/70/User_icon_BLACK-01.png' }
+                alt=""
+              />
+            </div>
+            <h4
+              className="h1-login username"
+              data-testid="header-user-name"
+            >
+              {nomeUsuario}
+
+            </h4>
+          </div>
+        </div>
+        <nav className="links">
+
+          <Link
+            className="link link-pesquisa"
+            data-testid="link-to-search"
+            to="/search"
+          >
+            <span className="material-symbols-outlined icon">
+              search
+            </span>
+            <span>Pesquisa</span>
+
+          </Link>
+
+          <Link
+            className="link link-favoritos"
+            data-testid="link-to-favorites"
+            to="/favorites"
+          >
+            <span className="material-symbols-outlined icon favorito">
+              star
+            </span>
+            <span> Favorites</span>
+
+          </Link>
+
+          <Link
+            className="link link-profiles"
+            data-testid="link-to-profile"
+            to="/profile"
+          >
+            <span className="material-symbols-outlined icon">
+              account_circle
+            </span>
+            <span>Profile</span>
+
+          </Link>
+
         </nav>
-        {carregando
-          ? <Carregando /> : <h1 data-testid="header-user-name">{nomeUsuario}</h1>}
       </header>
     );
+    // );
   }
 }
 export default Header;

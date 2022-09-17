@@ -30,11 +30,11 @@ class MusicCard extends React.Component {
       this.setState({ carregando: false });
     } else {
       this.setState({ carregando: true });
-      await removeSong(all);
       if (tela === 'favoritos') {
         removerFav(all);
       }
       this.setState({ carregando: false });
+      await removeSong(all);
     }
   }
 
@@ -47,25 +47,35 @@ class MusicCard extends React.Component {
 
   render() {
     const { verificaInput, carregando } = this.state;
-    const { trackName, previewUrl, trackId } = this.props;
+    const { trackName, previewUrl, trackId, artworkUrl100 } = this.props;
     return (
       <div>
-        <h2>{trackName}</h2>
-        <audio data-testid="audio-component" src={ previewUrl } controls>
-          <track kind="captions" />
-        </audio>
-        <label htmlFor="fav">
-          Favorita
-          <input
-            data-testid={ `checkbox-music-${trackId}` }
-            type="checkbox"
-            name="verificaInput"
-            id="fav"
-            checked={ verificaInput }
-            onChange={ this.onInputChange }
-          />
-        </label>
-        { carregando && <Carregando />}
+        <img src={ artworkUrl100 } alt="" />
+        <h2 className="nomeMusica-player">{trackName}</h2>
+        <div className="play-favorito">
+          <audio data-testid="audio-component" src={ previewUrl } controls>
+            <track kind="captions" />
+          </audio>
+          <label className="favorito-input" htmlFor={ trackId }>
+            <input
+              data-testid={ `checkbox-music-${trackId}` }
+              type="checkbox"
+              name="verificaInput"
+              id={ trackId }
+              checked={ verificaInput }
+              onChange={ this.onInputChange }
+            />
+            <span
+              className={ verificaInput
+                ? 'material-symbols-outlined favorito'
+                : 'material-symbols-outlined favoritoD' }
+            >
+              star
+            </span>
+          </label>
+        </div>
+        <hr />
+        {/* { carregando && <Carregando />} */}
       </div>
     );
   }

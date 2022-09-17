@@ -28,16 +28,17 @@ class Favorites extends React.Component {
     return (
       <>
         <Header />
-        <div data-testid="page-favorites">
-          {favorito.length && favorito.map((elemento, index) => (<MusicCard
+        <div className="paginaFavoritos" data-testid="page-favorites">
+          {favorito.length ? favorito.map((elemento, index) => (<MusicCard
             key={ `${elemento.trackName}${index}` }
             trackName={ elemento.trackName }
             previewUrl={ elemento.previewUrl }
             trackId={ elemento.trackId }
+            artworkUrl100={ elemento.artworkUrl100 }
             all={ elemento }
             tela="favoritos"
             removerFav={ this.removerFav }
-          />))}
+          />)) : <span className="nenhumaMusica">Nenhuma musica aqui</span>}
         </div>
       </>
     );

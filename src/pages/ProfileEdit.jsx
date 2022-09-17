@@ -57,14 +57,15 @@ render() {
   return (
     <>
       <Header />
-      <div data-testid="page-profile-edit">
+      <div className="container-Edit" data-testid="page-profile-edit">
         {/*  {redirecionar && <Redirect to="/profile" />} */}
         {
           carregando ? <Carregando /> : (
-            <form>
+            <form className="form-Edit">
               <label htmlFor="rNome">
-                Alterar Nome:
+                Nome:
                 <input
+                  className="form-control"
                   data-testid="edit-input-name"
                   type="text"
                   name="name"
@@ -75,8 +76,9 @@ render() {
               </label>
 
               <label htmlFor="rEmail">
-                Alterar Email:
+                Email:
                 <input
+                  className="form-control"
                   data-testid="edit-input-email"
                   type="email"
                   name="email"
@@ -89,11 +91,12 @@ render() {
               <label htmlFor="desc">
                 Descrição:
                 <textarea
+                  className="form-control"
                   data-testid="edit-input-description"
                   name="description"
                   id="desc"
                   cols="30"
-                  rows="10"
+                  rows="4"
                   value={ description }
                   onChange={ this.onInputChange }
                 >
@@ -103,8 +106,9 @@ render() {
               </label>
 
               <label htmlFor="foto">
-                Alterar Imagem:
+                insira uma imagem (URL):
                 <input
+                  className="form-control"
                   data-testid="edit-input-image"
                   type="text"
                   name="image"
@@ -115,6 +119,7 @@ render() {
               </label>
 
               <button
+                className="btn btn-primary"
                 data-testid="edit-button-save"
                 type="button"
                 disabled={ desabilita }

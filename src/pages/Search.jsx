@@ -46,32 +46,44 @@ class Search extends React.Component {
     return (
 
       listar ? (
-        <div>
-          <p>
+        <article className="container container-pesquisa">
+          <h4>
             {`Resultado de álbuns de: ${nomeDigitado}`}
-          </p>
-          { array.map((elemento) => (
-            <div key={ elemento.collectionId }>
-              <div>{elemento.artistId}</div>
-              <div>{elemento.artistName}</div>
-              <div>{elemento.collectionId}</div>
-              <div>{elemento.collectionName}</div>
-              <div>{elemento.collectionPrice}</div>
-              <div>
-                <img src={ elemento.artworkUrl100 } alt={ elemento.artistName } />
-              </div>
-              <div>{elemento.releaseDate}</div>
-              <div>{elemento.trackCount}</div>
-              <Link
-                data-testid={ `link-to-album-${elemento.collectionId}` }
-                to={ `/album/${elemento.collectionId}` }
-              >
-                Album
+          </h4>
+          <div className="resultPesquisa">
+            { array.map((elemento) => (
+              <div className="album" key={ elemento.collectionId }>
 
-              </Link>
-            </div>))}
+                <Link
+                  className="links-album"
+                  data-testid={ `link-to-album-${elemento.collectionId}` }
+                  to={ `/album/${elemento.collectionId}` }
+                >
 
-        </div>) : (<h4>Nenhum álbum foi encontrado</h4>)
+                  <div className="nomeArtista">{elemento.artistName}</div>
+                  <div className="div-imagem">
+                    <img src={ elemento.artworkUrl100 } alt={ elemento.artistName } />
+                  </div>
+                  <div className="div-Id">{elemento.artistId}</div>
+
+                  <div className="div-Id">{elemento.collectionId}</div>
+                  <div>
+                    {elemento.collectionName}
+                  </div>
+                  <div className="div-Id">
+                    {elemento.collectionPrice}
+                  </div>
+
+                  <div className="div-Id">{elemento.releaseDate}</div>
+                  <div className="numeroDeMusicas">
+                    {elemento.trackCount}
+                    {' '}
+                    musicas
+                  </div>
+                </Link>
+              </div>))}
+          </div>
+        </article>) : (<h4 className="mensagem">Nenhum álbum foi encontrado</h4>)
 
     );
   }
@@ -81,35 +93,39 @@ class Search extends React.Component {
     return (
       <>
         <Header />
-        <div data-testid="page-search">
+        <div className="container-search" data-testid="page-search">
           {carregando
             ? <Carregando />
             : (
-              <form action="">
-                <label htmlFor="nome">
-                  Nome:
-                  <input
-                    type="text"
-                    value={ nomeB }
-                    name="nome"
-                    id="nome"
-                    data-testid="search-artist-input"
-                    onChange={ this.onInputChange }
-                  />
-                </label>
-                <button
-                  type="button"
-                  disabled={ desabilitaBotao }
-                  data-testid="search-artist-button"
-                  onClick={ this.pesquisar }
-                >
-                  Pesquisar
+              <form className="form">
+                <div className="login-search">
+                  <label htmlFor="nome">
+                    <input
+                      placeholder="Nome da Musica"
+                      className="form-control"
+                      type="text"
+                      value={ nomeB }
+                      name="nome"
+                      id="nome"
+                      data-testid="search-artist-input"
+                      onChange={ this.onInputChange }
+                    />
+                  </label>
+                  <button
+                    className="btn btn-primary button-Search"
+                    type="button"
+                    disabled={ desabilitaBotao }
+                    data-testid="search-artist-button"
+                    onClick={ this.pesquisar }
+                  >
+                    Pesquisar
 
-                </button>
+                  </button>
+                </div>
               </form>) }
-          { loadding && this.colocarNaTela() }
 
         </div>
+        { loadding && this.colocarNaTela() }
       </>
     );
   }
