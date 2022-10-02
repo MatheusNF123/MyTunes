@@ -1,24 +1,11 @@
-/* body {
-  background-color: black;
-} */
-
-/* .container-geral {
-  background-color: black;
-  background-image: url('https://cdn.pixabay.com/photo/2015/01/20/13/13/samsung-605439_960_720.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
-} */
-
 /* LOGIN */
 .container1 {
   align-items: center;
   background-color: rgba(0, 0, 0, 0.815);
 
-  /* referencia da imagem: https://sme.goiania.go.gov.br/conexaoescola/ensino_fundamental/elementos-da-musica-e-a-composicao-musical/ */
-
-  /* background-image: url('https://www.hardware.com.br/static/wp/2021/03/24/descobrir-musica.jpg?fm=pjpg&ixlib=php-3.3.0'); */
+  /* referencia da imagem: https://sme.
+  goiania.go.gov.br/conexaoescola/ensino_fundamental
+  /elementos-da-musica-e-a-composicao-musical/ */
   background-image: url('https://sme.goiania.go.gov.br/conexaoescola/wp-content/uploads/2020/09/silhouette-3275055_1280-e1599841668596-1024x629.png');
   background-position: center;
   background-repeat: no-repeat;
@@ -33,6 +20,8 @@
 
 .h1-login {
   color: white;
+
+  /* stylelint-disable-next-line font-family-name-quotes */
   font-family: 'Fredoka One' , cursive;
   font-size: 40px;
   margin-left: 10px;
@@ -92,8 +81,6 @@
 .header {
   background-color: rgb(122, 122, 122);
   left: 0;
-
-  /* position: absolute; */
   top: 0;
   width: 100%;
 }
@@ -117,16 +104,12 @@
   background-color: rgb(180, 180, 180);
   border: 2px solid black;
   box-shadow: 0 2px 10px rgb(77, 77, 77);
-
-  /* border-radius: 30px; */
   color: white;
   display: flex;
   font-size: 20px;
   font-weight: 500;
   justify-content: center;
   margin: auto;
-
-  /* margin: 5px; */
   padding: 5px;
   text-decoration: none;
   text-shadow: 2px 2px 10px black;
@@ -149,11 +132,6 @@
 }
 
 
-
-/* .link-pesquisa span:nth-child( 2 ) {
-  font-size: 20px;
-} */
-
 .icon {
   color: black;
   margin-right: 5px;
@@ -161,6 +139,7 @@
 
 .favorito {
   color: yellow;
+  text-shadow: 0 0 10px black;
 }
 
 .infos-User {
@@ -169,8 +148,6 @@
   border-radius: 50px;
   display: flex;
   margin-right: 30px;
-
-  /* flex-direction: column; */
   padding: 0 30px;
 }
 
@@ -180,8 +157,6 @@
   display: flex;
   height: 50px;
   justify-content: center;
-
-  /* margin-bottom: 5px; */
   overflow: hidden;
   width: 50px;
 }
@@ -206,8 +181,6 @@
 }
 
 .resultPesquisa {
-
-  /* background-color: yellow; */
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -217,12 +190,8 @@
   align-items: center;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.267);
-
-  /* border: 2px solid black; */
   display: flex;
   flex-basis: 220px;
-
-  /* flex-direction: column; */
   height: 350px;
   justify-content: center;
   margin: 20px 10px;
@@ -249,8 +218,6 @@
 
 .div-imagem {
   align-items: center;
-
-  /* border-radius: 50px; */
   display: flex;
   height: 200px;
   justify-content: center;
@@ -267,15 +234,12 @@
 }
 
 .links-album {
-  color: black;
-  text-decoration: none;
-}
-
-.links-album {
   align-items: center;
+  color: black;
   display: flex;
   flex-direction: column;
   text-align: center;
+  text-decoration: none;
 }
 
 .links a {
@@ -301,20 +265,20 @@
 }
 
 .mensagem {
+
+  /* stylelint-disable-next-line font-family-name-quotes */
   font-family: 'Courier New' , Courier , monospace;
   font-size: 40px;
-  font-weight: bold;
+  font-weight: 600;
   margin-top: 120px;
   text-align: center;
 }
 
 .nomeArtista {
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .numeroDeMusicas {
-
-  /* background-color: rgb(116, 116, 116); */
   border-radius: 20px;
   box-shadow: 2px 2px 8px black;
   color: rgb(53, 53, 53);
@@ -329,11 +293,6 @@
   margin-top: 40px;
 }
 
-.album-artista {
-  font-size: 15px;
-
-  /* background-color: red; */
-}
 
 .album-nome {
   font-size: 20px;
@@ -344,6 +303,7 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  font-size: 15px;
   margin-right: 40px;
   width: 200px;
   word-wrap: break-word;
@@ -366,11 +326,6 @@
 }
 
 
-.favorito {
-  color: yellow;
-  text-shadow: 0 0 10px black;
-}
-
 .favoritoD {
   color: white;
   text-shadow: 0 0 10px black;
@@ -379,8 +334,6 @@
 
 /* favoritos */
 .paginaFavoritos {
-
-  /* border-top: 1px solid black; */
   margin-left: 10px;
   margin-top: 10px;
 }
@@ -411,17 +364,13 @@
 
 
 .profileInfos {
-  background-color: rgb(255, 255, 255);
+  background-color: white;
   border-radius: 20px;
   box-shadow: 0 3px 20px rgb(90, 90, 90);
   margin-bottom: 150px;
-
-  /* margin: 100px auto; */
   max-width: 350px;
   padding: 30px;
   width: 600px;
-
-  /* width: 40%; */
 }
 
 .profileInfos .cont-img {
@@ -442,17 +391,15 @@
 }
 
 
-
-
-
 /* profile-Edit */
 .container-Edit {
   align-items: center;
-  background-color: black;
   background-color: rgb(94, 94, 94);
   background-image: url('https://sme.goiania.go.gov.br/conexaoescola/wp-content/uploads/2020/09/silhouette-3275055_1280-e1599841668596-1024x629.png');
 
-  /* referencia da imagem: https://sme.goiania.go.gov.br/conexaoescola/ensino_fundamental/elementos-da-musica-e-a-composicao-musical/ */
+  /* referencia da imagem:
+   https://sme.goiania.go.gov.br/conexaoescola/ensino
+   _fundamental/elementos-da-musica-e-a-composicao-musical/ */
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -462,13 +409,11 @@
 }
 
 .form-Edit {
-  background-color: rgb(255, 255, 255);
+  background-color: white;
   border-radius: 20px;
   box-shadow: 0 0 20px rgb(100, 100, 100);
   display: flex;
   flex-direction: column;
-
-  /* margin-top: 180px; */
   margin-bottom: 180px;
   padding: 30px;
 }
@@ -477,6 +422,6 @@
   color: black;
   display: flex;
   flex-direction: column;
-  font-weight: bold;
+  font-weight: 600;
   margin-bottom: 10px;
 }

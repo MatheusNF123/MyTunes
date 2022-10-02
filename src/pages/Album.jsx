@@ -30,41 +30,43 @@ componentDidMount() {
         <Header />
         {carregando ? <Carregando />
 
-          : <div className="container-infos-player" data-testid="page-album">
-            <div className="album-artista">
-              <div className="div-imagem">
-                <img
-                  src={ objeto && objeto[0].artworkUrl100 }
-                  alt={ objeto && objeto[0].artistName }
-                />
+          : (
+            <div className="container-infos-player" data-testid="page-album">
+              <div className="album-artista">
+                <div className="div-imagem">
+                  <img
+                    src={ objeto && objeto[0].artworkUrl100 }
+                    alt={ objeto && objeto[0].artistName }
+                  />
+                </div>
+                <h4
+                  className="album-nome"
+                  data-testid="album-name"
+                >
+                  {objeto && objeto[0].collectionName}
+
+                </h4>
+                <h4
+                  className="album-artista"
+                  data-testid="artist-name"
+                >
+                  {objeto && objeto[0].artistName}
+
+                </h4>
               </div>
-              <h4
-                className="album-nome"
-                data-testid="album-name"
-              >
-                {objeto && objeto[0].collectionName}
+              <div className="player-musica">
+                {objeto && objeto.filter((elemento) => elemento.trackId)
+                  .map((element, index) => (<MusicCard
+                    key={ `${element.trackName} ${index}` }
+                    trackName={ element.trackName }
+                    previewUrl={ element.previewUrl }
+                    trackId={ element.trackId }
+                    all={ element }
+                  />))}
+              </div>
 
-              </h4>
-              <h4
-                className="album-artista"
-                data-testid="artist-name"
-              >
-                {objeto && objeto[0].artistName}
-
-              </h4>
             </div>
-            <div className="player-musica">
-              {objeto && objeto.filter((elemento) => elemento.trackId)
-                .map((element, index) => (<MusicCard
-                  key={ `${element.trackName} ${index}` }
-                  trackName={ element.trackName }
-                  previewUrl={ element.previewUrl }
-                  trackId={ element.trackId }
-                  all={ element }
-                />))}
-            </div>
-
-            </div>}
+          )}
       </>
     );
   }

@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Carregando from '../pages/Carregando';
+// import Carregando from '../pages/Carregando';
 import { getUser } from '../services/userAPI';
 
 class Header extends React.Component {
   state = {
     nomeUsuario: '',
-    carregando: false,
+    /* carregando: false, */
   }
 
   componentDidMount() {
@@ -14,18 +14,16 @@ class Header extends React.Component {
   }
 
   fetch = async () => {
-    this.setState({ carregando: true });
+    // this.setState({ /* carregando: true */ });
     const info = await getUser();
     this.setState({
       nomeUsuario: info.name,
-      email: info.email,
-      description: info.description,
       image: info.image || 'https://upload.wikimedia.org/wikipedia/commons/7/70/User_icon_BLACK-01.png',
-      carregando: false });
+      /* carregando: false */ });
   }
 
   render() {
-    const { nomeUsuario, carregando, image } = this.state;
+    const { nomeUsuario, /* carregando */ image } = this.state;
     return (
 
       // carregando

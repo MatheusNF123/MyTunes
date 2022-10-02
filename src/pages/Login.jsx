@@ -40,39 +40,41 @@ class Login extends React.Component {
        <div className="container1">
 
          {carregando ? <Carregando />
-           : <>
-             <h1 className="h1-login">MyTunes </h1>
-             <form className="form">
-               <div className="login">
-                 <label htmlFor="nome">
-                   <input
-                     className="form-control"
-                     placeholder="Nome"
-                     type="text"
-                     value={ nome }
-                     name="nome"
-                     id="nome"
-                     data-testid="login-name-input"
-                     onChange={ this.onInputChange }
-                   />
-                 </label>
+           : (
+             <>
+               <h1 className="h1-login">MyTunes </h1>
+               <form className="form">
+                 <div className="login">
+                   <label htmlFor="nome">
+                     <input
+                       className="form-control"
+                       placeholder="Nome"
+                       type="text"
+                       value={ nome }
+                       name="nome"
+                       id="nome"
+                       data-testid="login-name-input"
+                       onChange={ this.onInputChange }
+                     />
+                   </label>
 
-               </div>
-               <div className="button">
-                 <button
-                   type="button"
-                   className="btn btn-primary"
-                   disabled={ desabilitaBotao }
-                   data-testid="login-submit-button"
-                   onClick={ this.salvarNOme }
-                 >
-                   Entrar
+                 </div>
+                 <div className="button">
+                   <button
+                     type="button"
+                     className="btn btn-primary"
+                     disabled={ desabilitaBotao }
+                     data-testid="login-submit-button"
+                     onClick={ this.salvarNOme }
+                   >
+                     Entrar
 
-                 </button>
-               </div>
-             </form>
+                   </button>
+                 </div>
+               </form>
 
-             </>}
+             </>
+           )}
          {/* {carregando && <Carregando /> } */}
          {redirect && <Redirect to="/search" />}
        </div>
