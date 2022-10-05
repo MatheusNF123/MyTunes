@@ -1,12 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import Carregando from '../pages/Carregando';
 import { getUser } from '../services/userAPI';
 
 class Header extends React.Component {
   state = {
     nomeUsuario: '',
-    /* carregando: false, */
   }
 
   componentDidMount() {
@@ -14,24 +12,19 @@ class Header extends React.Component {
   }
 
   fetch = async () => {
-    // this.setState({ /* carregando: true */ });
     const info = await getUser();
     this.setState({
       nomeUsuario: info.name,
       image: info.image || 'https://upload.wikimedia.org/wikipedia/commons/7/70/User_icon_BLACK-01.png',
-      /* carregando: false */ });
+    });
   }
 
   render() {
-    const { nomeUsuario, /* carregando */ image } = this.state;
+    const { nomeUsuario, image } = this.state;
     return (
-
-      // carregando
-      //   ? <Carregando />
-      //   : (
       <header className="header" data-testid="header-component">
         <div className="titulo-user">
-          <h4 className="h1-login">TrybeTunes</h4>
+          <h4 className="h1-login">My-Tunes</h4>
           <div className="cont-player">
             <span className="material-symbols-outlined font-play">
               fast_rewind
@@ -101,7 +94,6 @@ class Header extends React.Component {
         </nav>
       </header>
     );
-    // );
   }
 }
 export default Header;

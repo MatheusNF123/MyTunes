@@ -75,7 +75,6 @@ class Login extends React.Component {
 
              </>
            )}
-         {/* {carregando && <Carregando /> } */}
          {redirect && <Redirect to="/search" />}
        </div>
 

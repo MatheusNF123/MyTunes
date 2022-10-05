@@ -1,12 +1,10 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import { addSong, removeSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
-// import Carregando from '../pages/Carregando';
 
 class MusicCard extends React.Component {
   state = {
     verificaInput: false,
-    // carregando: false,
   }
 
   componentDidMount() {
@@ -25,15 +23,11 @@ class MusicCard extends React.Component {
     const { verificaInput } = this.state;
     const { all, removerFav, tela } = this.props;
     if (verificaInput) {
-      // this.setState({ carregando: true });
       await addSong(all);
-      // this.setState({ carregando: false });
     } else {
-      // this.setState({ carregando: true });
       if (tela === 'favoritos') {
         removerFav(all);
       }
-      // this.setState({ carregando: false });
       await removeSong(all);
     }
   }
@@ -75,7 +69,6 @@ class MusicCard extends React.Component {
           </label>
         </div>
         <hr />
-        {/* { carregando && <Carregando />} */}
       </div>
     );
   }
